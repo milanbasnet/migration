@@ -20,7 +20,7 @@ use App\Http\Controllers\MessageController;
 */
 
 // Route::get('/', function () {
-//     return view('index');
+//     return view('admin.index');
 // })->name('home');
 
 Route::get('/',[HomeController::class, 'show'])->name('home');
@@ -84,3 +84,9 @@ Route::get('delete/{id}',[AboutController::class, 'destroy'])->name('delete');
 Route::post('update/{id}',[AboutController::class, 'updateAbout'])->name('update');
 
 Route::post('/editVisa', [VisaController::class, 'storeVisa'])->name('editVisa');
+
+Route::get('edvisa/{id}',[VisaController::class, 'displayedvisa'])->name('edvisa');
+Route::get('delvisaimage/{id}',[AdminController::class, 'delvisaimage'])->name('delvisaimage');
+Route::post('visaupdate/{id}', [VisaController::class, 'updatevisa'])->name('visaupdate');
+
+Route::get('/delabout/{id}', [AdminController::class, 'delabout'])->name('delabout');

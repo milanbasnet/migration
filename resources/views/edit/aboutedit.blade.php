@@ -15,9 +15,16 @@
        <label for="title">title</label>
        <input type="text" name="title" value="{{$posts->title}}">
        <label for="paragraph">content</label>
-      <textarea name="paragraph" type="text" value="{{$posts->paragraph}}"></textarea>
+      <input name="paragraph" type="textarea" value="{{$posts->paragraph}}">
+      
+          {{-- @if ({{"asset('images')/$posts->imgfile}})
+              <img src="{{$posts->imgfile}}" alt="">
+            @else
+            <p>no image found</p>
+          @endif --}}
+
        <label for="image">select image:</label>
-       <input type="file" name="image" src="{{asset('images')}}{{$posts->imgfile}}" id="">
+       <input type="file" name="image" value="{{$posts->imgfile}}" id="">
        <button type="submit">submit</button>
    </div>
    </form>

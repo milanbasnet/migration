@@ -15,7 +15,7 @@ class AboutController extends Controller
         $store= new About();
         $store->title=$request->title;
         $store->paragraph=$request->paragraph;
-        $store->imgfile=json_encode($aboutimageName);
+        $store->imgfile=($aboutimageName);
         $store->save();
         return redirect()->route('adminDisplay');
     }
@@ -32,6 +32,11 @@ class AboutController extends Controller
     }
 
     public function updateAbout(Request $request, $id){
+        $this->validate($request, [
+            'title'=>"required",
+            'paragraph'=>"required",
+            'imgFile'=> "nullable|mimes:jpeg,bmp,png,jpg"
+        ]);
         
         $name= $request->image->getClientOriginalExtension();
         $aboutimageName=time().'.'.$name;
@@ -40,7 +45,7 @@ class AboutController extends Controller
         $store= About::find($id);
         $store->title=$request->title;
         $store->paragraph=$request->paragraph;
-        $store->imgfile=json_encode($aboutimageName);
+        $store->imgfile=($aboutimageName);
         $store->save();
         return redirect()->route('adminDisplay');
     }

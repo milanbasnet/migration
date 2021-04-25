@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    @csrf
+
     @foreach ($showImage as $item)
     <?php
             $imagename= ($item->imageFile);
@@ -23,20 +23,20 @@
             <img src="{{asset('images')}}/{{$imagename}}" alt="">
         </div>
         
-        <form action="" method="get">
-        <button type="submit">Edit</button>
+        <form action="{{route('Edit',['id'=>$item->id])}}" method="get">
+            <button type="submit">Edit</button>
+        </form> 
+        <form action="{{route('delete',['id'=>$item->id])}}">
+                <button type="submit">Delete</button>
         </form>
-        <form action="{{route('dltimage',['id'=>$item->id])}}">
-        <button type="submit">Delete</button>
-        </form>
+
     @endforeach
        
 
-    {{-- <form action="" enctype="multipart/form-data">
-        @csrf
+    
         @foreach ($showAbout as $item)
         <?php
-            $imagename= json_decode($item->imgfile);
+            $imagename= ($item->imgfile);
         ?>
         <div class="col-md-4">
             <h4>{{$item->title}}</h4>
@@ -52,18 +52,15 @@
        <button type="submit">Edit</button>
         </form> 
 
-        <form action="{{route('delete',['id'=>$item->id])}}">
+        <form action="{{route('delabout',['id'=>$item->id])}}">
         <button type="submit">Delete</button>
         </form>
         @endforeach
-       
-    </form>
+    
 
-    <form action="" method="get">
-        @csrf
         @foreach ($showVisa as $item)
         <?php
-            $imagename= json_decode($item->imgfile);
+            $imagename= ($item->imgfile);
         ?>
         <div class="col-md-4">
             <h4>{{$item->title}}</h4>
@@ -77,13 +74,17 @@
         <div class="col-md-4">
             <img src="{{asset('images')}}/{{$imagename}}" alt="">
         </div>
-
-        <button type="submit">Edit</button>
-        <button type="submit">Delete</button>
+        <form action="{{route('edvisa',['id'=>$item->id])}}" method="get">
+            <button type="submit">Edit</button>
+             </form> 
+     
+             <form action="{{route('delvisaimage',['id'=>$item->id])}}">
+             <button type="submit">Delete</button>
+             </form>
+        
         @endforeach
        
-    </form> --}}
-   
+    {{-- </form> --}}
 
 </body>
 </html>

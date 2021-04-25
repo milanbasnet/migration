@@ -70,4 +70,22 @@ class AdminController extends Controller
         $admin->delete();
         return back();
     }
+    public function delvisaimage($id){
+        $visa=Visa::find($id);
+        $image= $visa->imgfile;
+        $image_path= 'images/'.$image;   
+     
+        file::delete($image_path);
+        $visa->delete();
+        return back();
+    }
+    public function delabout($id){
+        $about=About::find($id);
+        $image= $about->imgfile;
+        $image_path= 'images/'.$image;   
+     
+        file::delete($image_path);
+        $about->delete();
+        return back();
+    }
 }
